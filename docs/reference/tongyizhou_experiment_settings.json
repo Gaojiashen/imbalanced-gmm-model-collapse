@@ -1,0 +1,224 @@
+{
+  "description": "从保存的实际运行配置和源代码提取；不把当前默认值冒充旧实验文件中已有的记录。",
+  "fitted_gmm": {
+    "implementation": "Tongyizhou/gmm_cuda.py: 自定义 PyTorch CUDA EM",
+    "n_components": 25,
+    "dimension": 2,
+    "covariance_type": "full",
+    "parameters_learned": [
+      "weights",
+      "means",
+      "covariances"
+    ],
+    "initialization": "greedy_kmeans++",
+    "init_candidates": 5,
+    "lloyd_max_iter": 100,
+    "n_init": 3,
+    "max_iter": 300,
+    "tol": 0.0001,
+    "reg_covar": 1e-06,
+    "convergence_criterion": "每次初始化的平均训练对数似然变化绝对值 < tol；在各次初始化中选择最终平均对数似然最高者",
+    "covariance_update": "按各分量责任度加权的最大似然协方差（除以责任度之和），再加 reg_covar * I；不是论文单高斯理论中的 n-1 无偏估计",
+    "warm_start": false,
+    "dtype": "float64",
+    "sampling_bias": {
+      "lambda": 1.0,
+      "evidence": "model.sample 直接使用拟合协方差；未额外缩放协方差"
+    },
+    "reg_covar_is_not_true_variance": true
+  },
+  "evaluation": {
+    "real_reference_samples_per_seed": 5000,
+    "generated_samples_per_evaluation": 5000,
+    "eval_every": 20,
+    "always_evaluate_generations": [
+      1,
+      200,
+      2000
+    ],
+    "recall_k": 5,
+    "covered_mode_radius": 0.4,
+    "covered_mode_rule": "生成点分配给最近真实中心；距离 <= 4 * std，且至少出现一个合格生成点即计为覆盖",
+    "metrics": [
+      "total_variance",
+      "mean_component_variance",
+      "weighted_component_variance",
+      "recall",
+      "real_nll",
+      "covered_modes"
+    ],
+    "random_streams": [
+      "initial_training_sampling",
+      "fitting_initialization",
+      "real_reference_sampling",
+      "generated_evaluation_sampling",
+      "fresh_real_sampling"
+    ]
+  },
+  "main_experiments": {
+    "gmm": {
+      "source": "Tongyizhou/results/gmm/config.json",
+      "source_config": {
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "generations": 2000,
+        "samples": 2000,
+        "std": 0.1,
+        "eval_samples": 5000,
+        "eval_every": 20,
+        "n_init": 3,
+        "max_iter": 300,
+        "tol": 0.0001,
+        "reg_covar": 1e-06,
+        "device": "cuda:0",
+        "initialization": "greedy_kmeans++",
+        "init_candidates": 5,
+        "environment": {
+          "python": "3.14.4",
+          "numpy": "2.5.4",
+          "torch": "2.15.0",
+          "matplotlib": "3.11.2",
+          "cuda": "13.2",
+          "gpu": "NVIDIA GeForce RTX 5060 Ti",
+          "dtype": "float64"
+        }
+      },
+      "interpreted_fresh_fraction": 0.0,
+      "fresh_fraction_evidence": "旧配置文件未记录该字段；按 PROJECT.md 的纯合成实验说明及当前脚本默认值 0.0 解释",
+      "generation_1": {
+        "real_samples": 2000,
+        "synthetic_samples": 0
+      },
+      "generation_2_onwards": {
+        "fresh_real_samples": 0,
+        "synthetic_samples_from_previous_model": 2000
+      }
+    },
+    "gmm_fresh10": {
+      "source": "Tongyizhou/results/gmm_fresh10/config.json",
+      "source_config": {
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "generations": 2000,
+        "samples": 2000,
+        "std": 0.1,
+        "eval_samples": 5000,
+        "eval_every": 20,
+        "n_init": 3,
+        "max_iter": 300,
+        "tol": 0.0001,
+        "reg_covar": 1e-06,
+        "fresh_fraction": 0.1,
+        "device": "cuda:0",
+        "initialization": "greedy_kmeans++",
+        "init_candidates": 5,
+        "environment": {
+          "python": "3.14.4",
+          "numpy": "2.5.4",
+          "torch": "2.15.0",
+          "matplotlib": "3.11.2",
+          "cuda": "13.2",
+          "gpu": "NVIDIA GeForce RTX 5060 Ti",
+          "dtype": "float64"
+        }
+      },
+      "interpreted_fresh_fraction": 0.1,
+      "fresh_fraction_evidence": "配置文件明确记录",
+      "generation_1": {
+        "real_samples": 2000,
+        "synthetic_samples": 0
+      },
+      "generation_2_onwards": {
+        "fresh_real_samples": 200,
+        "synthetic_samples_from_previous_model": 1800
+      }
+    },
+    "gmm_fresh100": {
+      "source": "Tongyizhou/results/gmm_fresh100/config.json",
+      "source_config": {
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "generations": 2000,
+        "samples": 2000,
+        "std": 0.1,
+        "eval_samples": 5000,
+        "eval_every": 20,
+        "n_init": 3,
+        "max_iter": 300,
+        "tol": 0.0001,
+        "reg_covar": 1e-06,
+        "fresh_fraction": 1.0,
+        "device": "cuda:0",
+        "initialization": "greedy_kmeans++",
+        "init_candidates": 5,
+        "environment": {
+          "python": "3.14.4",
+          "numpy": "2.5.4",
+          "torch": "2.15.0",
+          "matplotlib": "3.11.2",
+          "cuda": "13.2",
+          "gpu": "NVIDIA GeForce RTX 5060 Ti",
+          "dtype": "float64"
+        }
+      },
+      "interpreted_fresh_fraction": 1.0,
+      "fresh_fraction_evidence": "配置文件明确记录",
+      "generation_1": {
+        "real_samples": 2000,
+        "synthetic_samples": 0
+      },
+      "generation_2_onwards": {
+        "fresh_real_samples": 2000,
+        "synthetic_samples_from_previous_model": 0
+      }
+    }
+  },
+  "historical_single_candidate_run": {
+    "source": "Tongyizhou/results/gmm_single_candidate/config.json",
+    "source_config": {
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "generations": 2000,
+      "samples": 2000,
+      "std": 0.1,
+      "eval_samples": 5000,
+      "eval_every": 20,
+      "n_init": 3,
+      "max_iter": 300,
+      "tol": 0.0001,
+      "reg_covar": 1e-06,
+      "device": "cuda:0",
+      "environment": {
+        "python": "3.14.4",
+        "numpy": "2.5.4",
+        "torch": "2.15.0",
+        "matplotlib": "3.11.2",
+        "cuda": "13.2",
+        "gpu": "NVIDIA GeForce RTX 5060 Ti",
+        "dtype": "float64"
+      }
+    },
+    "note": "PROJECT.md 说明这是先前的单候选初始化实验；其旧配置没有 initialization/init_candidates 字段，不应将当前 greedy 初始化设置追溯套用。"
+  },
+  "fitted_parameters_location": "Tongyizhou/results/<experiment>/seed_<seed>/parameters.npz：weights、means、covariances 保存每一代的实际拟合参数。本次不复制这些全量实验结果。"
+}

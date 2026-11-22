@@ -1,0 +1,13 @@
+{
+  "generations": 2000,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "eval_every": 20,
+  "k": 5,
+  "resume": false
+}

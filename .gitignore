@@ -1,0 +1,29 @@
+.venv/
+.uv-cache/
+__pycache__/
+*.pyc
+paper/_build/
+
+# Local history and duplicate manuscript package
+archive/
+paper/manuscript_package.zip
+
+# Bootstrap data and concise experiment results; report inputs are zipped.
+outputs/**
+!outputs/**/
+!outputs/datas/*
+!outputs/models/*.json
+!outputs/metrics/*
+!outputs/**/settings/*.json
+!outputs/**/summary/*.json
+!outputs/**/summary/*.csv
+!outputs/effective_sample_size/*.json
+!outputs/effective_sample_size/*.csv
+!outputs/effective_sample_size/calibration/summary.json
+!outputs/effective_sample_size/calibration/summary.csv
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,16 @@
+{
+  "generations": 2000,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "eval_every": 20,
+  "k": 5,
+  "resume": true,
+  "device": "cuda",
+  "fresh_fraction": 0.0,
+  "resolved_device": "cuda"
+}

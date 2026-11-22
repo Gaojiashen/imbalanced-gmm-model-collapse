@@ -1,0 +1,34 @@
+[
+  {
+    "source": "outputs\\report",
+    "destination": "archive\\2026-11-19\\report"
+  },
+  {
+    "source": "outputs\\figures\\report",
+    "destination": "archive\\2026-11-19\\figures\\report"
+  },
+  {
+    "source": "code\\organize_results.py",
+    "destination": "archive\\2026-11-19\\code\\organize_results.py"
+  },
+  {
+    "source": "code\\build_results_pdf.py",
+    "destination": "archive\\2026-11-19\\code\\build_results_pdf.py"
+  },
+  {
+    "source": "settings\\GAOJiashen_不均衡GMM实验说明.md",
+    "destination": "docs\\experiment_design_zh.md"
+  },
+  {
+    "source": "settings\\tongyizhou_true_gmm.json",
+    "destination": "docs\\reference\\tongyizhou_true_gmm.json"
+  },
+  {
+    "source": "settings\\tongyizhou_experiment_settings.json",
+    "destination": "docs\\reference\\tongyizhou_experiment_settings.json"
+  },
+  {
+    "source": "settings\\Tongyizhou_GMM参数说明.md",
+    "destination": "docs\\reference\\Tongyizhou_GMM参数说明.md"
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "initial_data": "D:\\HKUST\\5003StochasticProcessesandApplications\\project\\GAOJiashen\\outputs\\datas\\initial_samples_n2000_seed42.npz",
+  "first_model": "D:\\HKUST\\5003StochasticProcessesandApplications\\project\\GAOJiashen\\outputs\\models\\generation1_fit42_sample43_k5_model.json",
+  "true_config": "D:\\HKUST\\5003StochasticProcessesandApplications\\project\\GAOJiashen\\settings\\gao_unbalanced_true_gmm.json",
+  "input_sha256": {
+    "initial_samples_n2000_seed42.npz": "0571d4ca0a3ec01146d84436bf4877a2690b4685688f4b64f6971bfaaed2dee5",
+    "generation1_fit42_sample43_k5_model.json": "ae56845b922c466ba2abb0344a598316bbbf941f00157da77d3736cd06a6923f",
+    "gao_unbalanced_true_gmm.json": "efbc4905270d4348e1369d0bd906fe142b5c12c1cf76a67f3775b2eb280708af"
+  },
+  "fit": {
+    "n_components": 25,
+    "covariance_type": "full",
+    "n_init": 3,
+    "init_params": "kmeans",
+    "max_iter": 300,
+    "tol": 0.0001,
+    "reg_covar": 1e-06
+  },
+  "training_samples": 400,
+  "evaluation_samples": 2000,
+  "fresh_fraction": 0.5,
+  "device": "cuda",
+  "dtype": "float64",
+  "recipe": {
+    "mode": "fresh",
+    "n_fresh": 200,
+    "n_synthetic": 200,
+    "lambda": 0.8
+  },
+  "torch_version": "2.11.0+cu128",
+  "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "k": 5,
+  "eval_every": 20,
+  "coverage_radius": 0.4,
+  "classes": "Nearest true center, same rule for initial and generated points",
+  "reference": "Original 2000 points only; no new true reference sample",
+  "evaluation": "Independent of training; generation-1 evaluation shared across seeds",
+  "rng": "SeedSequence([trajectory_seed, generation, purpose]); 0=synthetic, 1=fit, 2=eval, 3=fresh, 4=shuffle",
+  "versions": {
+    "python": "3.13.7",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "matplotlib": "3.11.2"
+  }
+}
